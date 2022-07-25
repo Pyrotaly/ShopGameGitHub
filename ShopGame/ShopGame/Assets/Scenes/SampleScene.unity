@@ -742,6 +742,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 929804522}
+  animator: {fileID: 929804525}
+  VMove: 0
+  HMove: 0
   walkSpeed: 5
   sprintSpeed: 7
   raycastTransform: {fileID: 0}

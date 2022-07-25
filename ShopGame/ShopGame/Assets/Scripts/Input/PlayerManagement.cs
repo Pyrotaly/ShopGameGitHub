@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerManagement : MonoBehaviour
 {
-    //private CharacterController controller;
-    [SerializeField] Rigidbody2D rb2d;
-
-
+    [SerializeField] private Rigidbody2D rb2d;
+    [SerializeField] private Animator animator;
     private Vector2 moveDirection = Vector2.zero;
+    
+    public bool Move;
 
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 5; //Walkspeed
@@ -34,17 +34,24 @@ public class PlayerManagement : MonoBehaviour
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        Debug.Log("Sprinting " + isSprinting);
-        Debug.Log(RawMovementInput);
+        animator.SetFloat("Vertical", RawMovementInput.y);
+        animator.SetFloat("Horizontal", Mathf.Abs(RawMovementInput.x));
+        animator.SetBool("Move", Move);
+
+        Mathf.Abs(RawMovementInput.x);
+
         ManageFootstepSounds();
     }
 
     private void FixedUpdate()
     {
+        Debug.Log(RawMovementInput.x);
+
         ManageHorizontalMovement();
     }
 
@@ -78,18 +85,30 @@ public class PlayerManagement : MonoBehaviour
     #region InputManager 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
+        if (context.started)
+        {
+            Move = true;
+        }   
+        else if (context.canceled)
+        {
+            Move = false;
+        }
+
         RawMovementInput = context.ReadValue<Vector2>();
 
         moveDirection.x = RawMovementInput.x;
         moveDirection.y = RawMovementInput.y;
 
-        if (RawMovementInput.x >= 1)
+        //Temporary Flip Manager  https://www.youtube.com/watch?v=Cr-j7EoM8bg go here for better flip
+
+        if (RawMovementInput.x > 0.6) 
         {
-            this.rb2d.transform.Rotate(0.0f, 180.0f, 0.0f);
+            transform.localScale = new Vector3(1, 1, 1);
         }
-        else
+
+        if (RawMovementInput.x < -0.6) 
         {
-            this.rb2d.transform.Rotate(0.0f, 0.0f, 0.0f);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
