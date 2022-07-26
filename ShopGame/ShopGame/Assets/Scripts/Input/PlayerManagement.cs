@@ -7,11 +7,13 @@ public class PlayerManagement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb2d;
     [SerializeField] private Animator animator;
+    private bool Move;
     private Vector2 moveDirection = Vector2.zero;
-    
-    public bool Move;
 
-    private IInteractable interactable;
+    private Vector2 facingDirection = Vector2.down; //Temporarily, player will be always facing down in terms of code
+    private float facingDirectionLength = 0.75f;
+
+    private List<IInteractable> interactable;
 
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 5; //Walkspeed
@@ -45,9 +47,12 @@ public class PlayerManagement : MonoBehaviour
         animator.SetFloat("Horizontal", Mathf.Abs(RawMovementInput.x));
         animator.SetBool("Move", Move);
 
+        Debug.Log(InteractCheck());
         Mathf.Abs(RawMovementInput.x);
 
         ManageFootstepSounds();
+
+        Debug.DrawRay(this.transform.position, facingDirection, Color.red);
     }
 
     private void FixedUpdate()
@@ -63,24 +68,26 @@ public class PlayerManagement : MonoBehaviour
     private void ManageFootstepSounds()
     {
         if (Mathf.Abs(RawMovementInput.x) < 0.0001 && Mathf.Abs(RawMovementInput.y) < 0.0001) return;  //If not moving then return
-
-        //if (Physics.Raycast(raycastTransform.position, Vector3.down, out RaycastHit hit, 20))
-        //{
-        //    switch (hit.collider.tag)
-        //    {
-        //        case "Footsteps/Grass":
-        //            Debug.Log("Grassy");
-        //            //footStepAudioSource.PlayOneShot(grassSteps[Random.Range(0, grassSteps.Length - 1)]);
-        //            break;
-        //        case "Footsteps/Dirt":
-        //            Debug.Log("Dirty");
-        //            //footStepAudioSource.PlayOneShot(dirtSteps[Random.Range(0, dirtSteps.Length - 1)]);
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
     }   
+
+    private bool InteractCheck()
+    {
+        RaycastHit2D interactHit = Physics2D.Raycast(this.transform.position, facingDirection, facingDirectionLength);
+
+        if (interactHit.collider.GetComponent<IInteractable>() != null)
+        {
+            interactable = interactHit.collider.GetComponent<IInteractable>();
+            Debug.Log("yay");
+            return true;
+        }
+        else
+        {
+            interactable = null;
+            Debug.Log("boo");
+            return false;
+        }
+    }
+
 
     #region InputManager 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -126,7 +133,9 @@ public class PlayerManagement : MonoBehaviour
 
     public void OnInteractInput(InputAction.CallbackContext context)
     {
-
+        
     }
     #endregion
+
+
 }
