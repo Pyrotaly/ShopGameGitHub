@@ -5252,6 +5252,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4524517881487723479, guid: 2e0f6c604ae5bfc4c8bfb23acce631e1, type: 3}
+      propertyPath: layer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524517881571830611, guid: 2e0f6c604ae5bfc4c8bfb23acce631e1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4524517881571830620, guid: 2e0f6c604ae5bfc4c8bfb23acce631e1, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5701,7 +5709,7 @@ GameObject:
   - component: {fileID: 1911131350}
   - component: {fileID: 1911131353}
   - component: {fileID: 1911131352}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Desk
   m_TagString: Interactable
   m_Icon: {fileID: 0}

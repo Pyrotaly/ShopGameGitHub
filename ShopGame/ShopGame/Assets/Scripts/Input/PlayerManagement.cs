@@ -13,7 +13,9 @@ public class PlayerManagement : MonoBehaviour
     private Vector2 facingDirection = Vector2.down; //Temporarily, player will be always facing down in terms of code
     private float facingDirectionLength = 0.75f;
 
-    private List<IInteractable> interactable;
+    private IInteractable interactable;
+    [SerializeField] private LayerMask layer;
+    RaycastHit2D interactHit;
 
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 5; //Walkspeed
@@ -47,12 +49,15 @@ public class PlayerManagement : MonoBehaviour
         animator.SetFloat("Horizontal", Mathf.Abs(RawMovementInput.x));
         animator.SetBool("Move", Move);
 
-        Debug.Log(InteractCheck());
+        //Debug.Log(InteractCheck());
         Mathf.Abs(RawMovementInput.x);
 
         ManageFootstepSounds();
 
         Debug.DrawRay(this.transform.position, facingDirection, Color.red);
+
+        interactHit = Physics2D.Raycast(this.transform.position, facingDirection, facingDirectionLength, layer);
+
     }
 
     private void FixedUpdate()
@@ -70,23 +75,23 @@ public class PlayerManagement : MonoBehaviour
         if (Mathf.Abs(RawMovementInput.x) < 0.0001 && Mathf.Abs(RawMovementInput.y) < 0.0001) return;  //If not moving then return
     }   
 
-    private bool InteractCheck()
-    {
-        RaycastHit2D interactHit = Physics2D.Raycast(this.transform.position, facingDirection, facingDirectionLength);
+    //private bool InteractCheck()
+    //{
+    //    RaycastHit2D interactHit = Physics2D.Raycast(this.transform.position, facingDirection, facingDirectionLength);
 
-        if (interactHit.collider.GetComponent<IInteractable>() != null)
-        {
-            interactable = interactHit.collider.GetComponent<IInteractable>();
-            Debug.Log("yay");
-            return true;
-        }
-        else
-        {
-            interactable = null;
-            Debug.Log("boo");
-            return false;
-        }
-    }
+    //    if (interactHit.collider.GetComponent<IInteractable>() != null)
+    //    {
+    //        //interactable = interactHit.collider.GetComponent<IInteractable>();
+    //        Debug.Log("yay");
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        interactable = null;
+    //        Debug.Log("boo");
+    //        return false;
+    //    }
+    //}
 
 
     #region InputManager 
@@ -133,7 +138,21 @@ public class PlayerManagement : MonoBehaviour
 
     public void OnInteractInput(InputAction.CallbackContext context)
     {
-        
+        if (context.started)
+        {
+            if (interactHit.collider != null)
+            {
+                interactHit.collider.GetComponent<IInteractable>().OnInteract();
+            }
+            else
+            {
+                Debug.Log("aha");
+            }
+        }
+        else if (context.canceled)
+        {
+        }
+
     }
     #endregion
 
