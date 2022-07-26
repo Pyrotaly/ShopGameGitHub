@@ -11,6 +11,8 @@ public class PlayerManagement : MonoBehaviour
     
     public bool Move;
 
+    private IInteractable interactable;
+
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 5; //Walkspeed
     [SerializeField] private float sprintSpeed = 7; //SprintSpeed
@@ -50,8 +52,6 @@ public class PlayerManagement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(RawMovementInput.x);
-
         ManageHorizontalMovement();
     }
 
@@ -99,7 +99,7 @@ public class PlayerManagement : MonoBehaviour
         moveDirection.x = RawMovementInput.x;
         moveDirection.y = RawMovementInput.y;
 
-        //Temporary Flip Manager  https://www.youtube.com/watch?v=Cr-j7EoM8bg go here for better flip
+        //Temporary Flip Manager  https://www.youtube.com/watch?v=Cr-j7EoM8bg go here for better flip 
 
         if (RawMovementInput.x > 0.6) 
         {
@@ -122,6 +122,11 @@ public class PlayerManagement : MonoBehaviour
         {
             isSprinting = false;
         }
+    }
+
+    public void OnInteractInput(InputAction.CallbackContext context)
+    {
+
     }
     #endregion
 }
