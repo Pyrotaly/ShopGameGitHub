@@ -7,9 +7,15 @@ public class PlayerManagement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb2d;
     [SerializeField] private Animator animator;
+    private bool Move;
     private Vector2 moveDirection = Vector2.zero;
-    
-    public bool Move;
+
+    private Vector2 facingDirection = Vector2.down; //Temporarily, player will be always facing down in terms of code
+    private float facingDirectionLength = 0.75f;
+
+    private IInteractable interactable;
+    [SerializeField] private LayerMask layer;
+    RaycastHit2D interactHit;
 
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 5; //Walkspeed
@@ -46,12 +52,14 @@ public class PlayerManagement : MonoBehaviour
         Mathf.Abs(RawMovementInput.x);
 
         ManageFootstepSounds();
+
+        Debug.DrawRay(this.transform.position, facingDirection, Color.red);
+
+        interactHit = Physics2D.Raycast(this.transform.position, facingDirection, facingDirectionLength, layer);
     }
 
     private void FixedUpdate()
     {
-        Debug.Log(RawMovementInput.x);
-
         ManageHorizontalMovement();
     }
 
@@ -63,7 +71,7 @@ public class PlayerManagement : MonoBehaviour
     private void ManageFootstepSounds()
     {
         if (Mathf.Abs(RawMovementInput.x) < 0.0001 && Mathf.Abs(RawMovementInput.y) < 0.0001) return;  //If not moving then return
-
+            
         //if (Physics.Raycast(raycastTransform.position, Vector3.down, out RaycastHit hit, 20))
         //{
         //    switch (hit.collider.tag)
@@ -80,7 +88,7 @@ public class PlayerManagement : MonoBehaviour
         //            break;
         //    }
         //}
-    }   
+    }
 
     #region InputManager 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -99,7 +107,7 @@ public class PlayerManagement : MonoBehaviour
         moveDirection.x = RawMovementInput.x;
         moveDirection.y = RawMovementInput.y;
 
-        //Temporary Flip Manager  https://www.youtube.com/watch?v=Cr-j7EoM8bg go here for better flip
+        //Temporary Flip Manager  https://www.youtube.com/watch?v=Cr-j7EoM8bg go here for better flip 
 
         if (RawMovementInput.x > 0.6) 
         {
@@ -122,6 +130,25 @@ public class PlayerManagement : MonoBehaviour
         {
             isSprinting = false;
         }
+    }
+
+    public void OnInteractInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if (interactHit.collider != null)
+            {
+                interactHit.collider.GetComponent<IInteractable>().OnInteract();
+            }
+            else
+            {
+                Debug.Log("aha");
+            }
+        }
+        else if (context.canceled)
+        {
+        }
+
     }
     #endregion
 }
