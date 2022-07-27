@@ -71,7 +71,7 @@ public class PlayerManagement : MonoBehaviour
     private void ManageFootstepSounds()
     {
         if (Mathf.Abs(RawMovementInput.x) < 0.0001 && Mathf.Abs(RawMovementInput.y) < 0.0001) return;  //If not moving then return
-
+            
         //if (Physics.Raycast(raycastTransform.position, Vector3.down, out RaycastHit hit, 20))
         //{
         //    switch (hit.collider.tag)
