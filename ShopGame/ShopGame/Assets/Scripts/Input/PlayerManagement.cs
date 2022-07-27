@@ -49,7 +49,6 @@ public class PlayerManagement : MonoBehaviour
         animator.SetFloat("Horizontal", Mathf.Abs(RawMovementInput.x));
         animator.SetBool("Move", Move);
 
-        //Debug.Log(InteractCheck());
         Mathf.Abs(RawMovementInput.x);
 
         ManageFootstepSounds();
@@ -73,26 +72,24 @@ public class PlayerManagement : MonoBehaviour
     private void ManageFootstepSounds()
     {
         if (Mathf.Abs(RawMovementInput.x) < 0.0001 && Mathf.Abs(RawMovementInput.y) < 0.0001) return;  //If not moving then return
-    }   
 
-    //private bool InteractCheck()
-    //{
-    //    RaycastHit2D interactHit = Physics2D.Raycast(this.transform.position, facingDirection, facingDirectionLength);
-
-    //    if (interactHit.collider.GetComponent<IInteractable>() != null)
-    //    {
-    //        //interactable = interactHit.collider.GetComponent<IInteractable>();
-    //        Debug.Log("yay");
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        interactable = null;
-    //        Debug.Log("boo");
-    //        return false;
-    //    }
-    //}
-
+        //if (Physics.Raycast(raycastTransform.position, Vector3.down, out RaycastHit hit, 20))
+        //{
+        //    switch (hit.collider.tag)
+        //    {
+        //        case "Footsteps/Grass":
+        //            Debug.Log("Grassy");
+        //            //footStepAudioSource.PlayOneShot(grassSteps[Random.Range(0, grassSteps.Length - 1)]);
+        //            break;
+        //        case "Footsteps/Dirt":
+        //            Debug.Log("Dirty");
+        //            //footStepAudioSource.PlayOneShot(dirtSteps[Random.Range(0, dirtSteps.Length - 1)]);
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
+    }
 
     #region InputManager 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -155,6 +152,4 @@ public class PlayerManagement : MonoBehaviour
 
     }
     #endregion
-
-
 }
