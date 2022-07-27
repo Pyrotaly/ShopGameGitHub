@@ -56,7 +56,6 @@ public class PlayerManagement : MonoBehaviour
         Debug.DrawRay(this.transform.position, facingDirection, Color.red);
 
         interactHit = Physics2D.Raycast(this.transform.position, facingDirection, facingDirectionLength, layer);
-
     }
 
     private void FixedUpdate()
