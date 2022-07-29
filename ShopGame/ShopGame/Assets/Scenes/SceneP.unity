@@ -3922,6 +3922,7 @@ GameObject:
   - component: {fileID: 1175984009}
   - component: {fileID: 1175984008}
   - component: {fileID: 1175984007}
+  - component: {fileID: 1175984012}
   m_Layer: 0
   m_Name: Ludo_Logic (2)
   m_TagString: Untagged
@@ -3943,6 +3944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPath: {fileID: 0}
   testTransform: {fileID: 2041926548}
+  rpd: {fileID: 0}
 --- !u!58 &1175984008
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4044,6 +4046,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1175984012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175984006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c729af91d0c1b48bc5ebcae7bff478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Center: {x: 0, y: -0.69}
+  Size: {x: 19.28, y: 17.79}
+  RandomPosition: {x: 0, y: 0}
 --- !u!1 &1187195191
 GameObject:
   m_ObjectHideFlags: 0
