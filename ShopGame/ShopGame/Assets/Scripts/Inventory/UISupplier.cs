@@ -11,6 +11,8 @@ public class UISupplier : MonoBehaviour
 
     [SerializeField] private float shopItemHeight;
 
+    public List<BaseItems> ItemList;
+
     private void Awake()
     {
         container = transform.Find("container");
