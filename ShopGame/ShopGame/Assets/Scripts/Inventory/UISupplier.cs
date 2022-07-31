@@ -22,19 +22,22 @@ public class UISupplier : MonoBehaviour
 
     private void Start()
     {
-        CreateItemButton(0);
-        CreateItemButton(1);
+        //Displays Items on Canvas 
+        for (int i = 0; i < ItemList.Count; i++) //There should be the same length for all data types
+        {
+            CreateItemButton(ItemList[i].ItemIcon, ItemList[i].ItemName, ItemList[i].ItemPrice, i);
+        }
     }
 
-    private void CreateItemButton(int positionIndex)
+    private void CreateItemButton(Sprite itemSprite, string itemName, float itemCost, int positionIndex)
     {
         Transform shopItemTransform = Instantiate(shopItemTemplate, container);
         RectTransform shopItemRectTransform = shopItemTransform.GetComponent<RectTransform>();
         //float shopItemHeight = 30f;
         shopItemRectTransform.anchoredPosition = new Vector2(0, -shopItemHeight * positionIndex);
 
-        //When I find a way to get refernce to item names prices and such, can set them when adding to list
-        //shopItemTransform.Find("costText").GetComponent<TextMeshProUGUI>().SetText(itemName);  
-        //shopItemTransform.Find("priceText").GetComponent<TextMeshProUGUI>().SetText(priceName.ToString());  
+        shopItemTransform.Find("itemIcon").GetComponent<Image>().sprite = itemSprite;
+        shopItemTransform.Find("itemName").GetComponent<TextMeshProUGUI>().SetText(itemName);
+        shopItemTransform.Find("itemPrice").GetComponent<TextMeshProUGUI>().SetText(itemCost.ToString());
     }
 }

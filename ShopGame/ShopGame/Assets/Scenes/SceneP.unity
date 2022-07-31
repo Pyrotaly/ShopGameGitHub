@@ -1609,6 +1609,12 @@ MonoBehaviour:
   shopItemHeight: 60
   ItemList:
   - {fileID: 11400000, guid: e86989d59d21252419b60ea29276e781, type: 2}
+  - {fileID: 11400000, guid: 058b423702b095741a70e9d776e3b238, type: 2}
+  - {fileID: 11400000, guid: f62fea8baa89d17438edf4258d4897dd, type: 2}
+  - {fileID: 11400000, guid: cdc6ded82d3dce248a53af5d6b4ea895, type: 2}
+  - {fileID: 11400000, guid: ca9c30b4d09a14348bf4f38a45fc14e8, type: 2}
+  - {fileID: 11400000, guid: eeeb1b360212e4e4dadd8b79f59af842, type: 2}
+  - {fileID: 11400000, guid: c0f279c2f6c9ddf4e9f74f3710721f30, type: 2}
 --- !u!1 &420526083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,7 +1815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: -6}
+  m_AnchoredPosition: {x: -45, y: -6}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &459664855
@@ -2643,7 +2649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988576308055322226, guid: 1f1b1d691d70e5d4b909a9323acc9d6a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 5988576308055322226, guid: 1f1b1d691d70e5d4b909a9323acc9d6a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6167,7 +6173,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 183}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1604171611
@@ -6550,7 +6556,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 107, y: -6}
+  m_AnchoredPosition: {x: 106, y: -12}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1721297387
@@ -6600,8 +6606,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 27.38
+  m_fontSizeBase: 27.38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
