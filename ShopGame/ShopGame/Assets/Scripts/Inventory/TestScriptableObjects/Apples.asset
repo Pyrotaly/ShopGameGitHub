@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Apples
   m_EditorClassIdentifier: 
   ItemIcon: {fileID: 0}
-  ItemName: 
+  ItemName: Apple
   ItemId: 0
   ItemPrice: 0
   ItemRobChance: 0
-  Price: 0
+  BasePrice: 0

@@ -1607,6 +1607,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopItemHeight: 60
+  ItemList:
+  - {fileID: 11400000, guid: e86989d59d21252419b60ea29276e781, type: 2}
 --- !u!1 &420526083
 GameObject:
   m_ObjectHideFlags: 0
