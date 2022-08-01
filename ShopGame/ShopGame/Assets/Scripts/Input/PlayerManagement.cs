@@ -5,24 +5,25 @@ using UnityEngine.InputSystem;
 
 public class PlayerManagement : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Rigidbody2D rb2d;
     [SerializeField] private Animator animator;
-    private bool Move;
-    private Vector2 moveDirection = Vector2.zero;
 
+    //Direction Management
     private Vector2 facingDirection = Vector2.down; //Temporarily, player will be always facing down in terms of code
     private float facingDirectionLength = 0.75f;
 
-    private IInteractable interactable;
+    [Header("Interaction")]
     [SerializeField] private LayerMask layer;
     RaycastHit2D interactHit;
 
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 5; //Walkspeed
     [SerializeField] private float sprintSpeed = 7; //SprintSpeed
-    private Vector3 playerVelocity;
+    private Vector2 moveDirection = Vector2.zero;
     private Vector2 RawMovementInput;
     private bool isSprinting;
+    private bool Move;
 
     [Header("Footstep Noise Parameters")]
     [SerializeField] private Transform raycastTransform;
@@ -33,7 +34,8 @@ public class PlayerManagement : MonoBehaviour
     [SerializeField] private AudioClip[] grassSteps;
     [SerializeField] private AudioClip[] dirtSteps;
     [SerializeField] private AudioClip[] rockSteps;
-    private float footStepTimer = 0;
+    private float footStepTimer = 0;    
+
     //private float GetCurrentOffSet => isCrouching ? baseStepSpeed * crouchStepMultiplier :
     //    isSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed;
 
@@ -45,17 +47,16 @@ public class PlayerManagement : MonoBehaviour
 
     private void Update()
     {
+        //Animation Management
         animator.SetFloat("Vertical", RawMovementInput.y);
         animator.SetFloat("Horizontal", Mathf.Abs(RawMovementInput.x));
         animator.SetBool("Move", Move);
 
-        Mathf.Abs(RawMovementInput.x);
-
         ManageFootstepSounds();
 
-        Debug.DrawRay(this.transform.position, facingDirection, Color.red);
-
+        //Interact raycast
         interactHit = Physics2D.Raycast(this.transform.position, facingDirection, facingDirectionLength, layer);
+        Debug.DrawRay(this.transform.position, facingDirection, Color.red);
     }
 
     private void FixedUpdate()
@@ -140,15 +141,7 @@ public class PlayerManagement : MonoBehaviour
             {
                 interactHit.collider.GetComponent<IInteractable>().OnInteract();
             }
-            else
-            {
-                Debug.Log("aha");
-            }
         }
-        else if (context.canceled)
-        {
-        }
-
     }
     #endregion
 }
