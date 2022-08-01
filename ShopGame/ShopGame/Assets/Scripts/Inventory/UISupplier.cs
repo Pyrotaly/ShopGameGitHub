@@ -15,20 +15,23 @@ public class UISupplier : MonoBehaviour
 
     private void Awake()
     {
-        container = transform.Find("container");
-        shopItemTemplate = container.Find("ShopItemTemplate");
+        container = transform.Find("container1");
+        shopItemTemplate = container.Find("ShopItemTemplate1");
+
         //shopItemTemplate.gameObject.SetActive(false);
     }
 
     private void Start()
     {
         //Displays Items on Canvas 
+
         for (int i = 0; i < ItemList.Count; i++) //There should be the same length for all data types
         {
             CreateItemButton(ItemList[i].ItemIcon, ItemList[i].ItemName, ItemList[i].ItemPrice, i);
         }
     }
 
+    //This is for only one menu
     private void CreateItemButton(Sprite itemSprite, string itemName, float itemCost, int positionIndex)
     {
         Transform shopItemTransform = Instantiate(shopItemTemplate, container);
