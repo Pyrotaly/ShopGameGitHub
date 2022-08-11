@@ -6,9 +6,14 @@ using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler 
 {
+    public GameObject testingPrefab;
+
     [SerializeField] private Color _baseColor, _offsetColor;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private GameObject highlight;
+
+    public int x;
+    public int y;
 
     private void Start()
     {
@@ -43,7 +48,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("hello");
+        Debug.Log($" {x} {y} " );
+        
+        Instantiate(testingPrefab, new Vector3(x,y), Quaternion.identity);
 
         if (eventData.button == PointerEventData.InputButton.Left) Debug.Log("leftMouseButtonPressed");
         else Debug.Log("rightMouseButtonPressed");
