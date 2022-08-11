@@ -1677,7 +1677,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopItemHeight: 60
-  SellingItemList: []
+  SellingItemList:
+  - {fileID: 11400000, guid: e86989d59d21252419b60ea29276e781, type: 2}
+  - {fileID: 11400000, guid: 058b423702b095741a70e9d776e3b238, type: 2}
+  - {fileID: 11400000, guid: f62fea8baa89d17438edf4258d4897dd, type: 2}
+  - {fileID: 11400000, guid: cdc6ded82d3dce248a53af5d6b4ea895, type: 2}
+  - {fileID: 11400000, guid: ca9c30b4d09a14348bf4f38a45fc14e8, type: 2}
+  - {fileID: 11400000, guid: eeeb1b360212e4e4dadd8b79f59af842, type: 2}
+  - {fileID: 11400000, guid: c0f279c2f6c9ddf4e9f74f3710721f30, type: 2}
 --- !u!1 &420526083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,6 +1851,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &441722235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 441722236}
+  m_Layer: 0
+  m_Name: Tiles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &441722236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441722235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 406.6821, y: 311.18536, z: -75.44273}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459664853
 GameObject:
   m_ObjectHideFlags: 0
@@ -7934,7 +7971,7 @@ MonoBehaviour:
   height: 9
   tilePrefab: {fileID: 3240382333278110598}
   cam: {fileID: 519420032}
-  TileFolder: {fileID: 0}
+  TileFolder: {fileID: 441722236}
 --- !u!4 &1752790080
 Transform:
   m_ObjectHideFlags: 0

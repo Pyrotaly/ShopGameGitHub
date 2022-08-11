@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour
     //Money Amount //Sanity Amount
 
     //How many items the player has
-    public List<InventorySlot> Container = new List<InventorySlot>();
+    public List<BaseItems> Stock;
 
     private void Awake()
     {
@@ -17,38 +17,23 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(BaseItems item, int amount)
     {
-        bool hasItem = false;
-        for (int i = 0; i < Container.Count; i++)
-        {
-            if(Container[i].Item == item)
-            {
-                Container[i].AddAmount(amount);
-                hasItem = true;
-                Debug.Log(amount);
-                break;
-            }
-        }
-        if (!hasItem)
-        {
-            Container.Add(new InventorySlot(item, amount));
-        }
+        Stock.Add(item);
+
+        //Debug.Log("2");
+        //for (int i = 0; i < Container.Count; i++)
+        //{
+        //    if(Container[i].Item == item)
+        //    {
+        //        Container[i].AddAmount(amount);
+        //        Debug.Log("2");
+        //        break;
+        //    }
+        //    else
+        //    {
+        //        Container.Add(new InventorySlot(item, amount));
+        //        Debug.Log("1");
+        //    }
+        //}
     }
 }
 
-[System.Serializable]
-public class InventorySlot
-{
-    public BaseItems Item;
-    public int Amount;
-
-    public InventorySlot(BaseItems item, int amount)
-    {
-        item = Item;
-        Amount = amount;
-    }
-
-    public void AddAmount(int value)
-    {
-        Amount += value;
-    }
-}
