@@ -9,7 +9,7 @@ public class PlayerManagement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2d;
     [SerializeField] private Animator animator;
 
-    //Direction Management
+    //Direction Management WIP
     private Vector2 facingDirection = Vector2.down; //Temporarily, player will be always facing down in terms of code
     private float facingDirectionLength = 0.75f;
 

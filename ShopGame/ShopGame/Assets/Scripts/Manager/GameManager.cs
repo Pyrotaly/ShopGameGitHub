@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ChangeState(GameState.PlayerWalk);
+        //ChangeState(GameState.PlayerWalk);
+        ChangeState(GameState.GenerateGrid);
     }
 
     public void ChangeState(GameState newState)
