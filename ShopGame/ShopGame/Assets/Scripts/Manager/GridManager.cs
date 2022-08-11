@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+    public static GridManager instance;
+
     [SerializeField] private int width, height;
-
     [SerializeField] private Tile tilePrefab;
-
     [SerializeField] private Transform cam;
 
     private Dictionary<Vector2, Tile> tiles;
 
-    void Start()
+    private void Awake()
     {
-        GenerateGrid();
+        instance = this;
     }
 
-    void GenerateGrid()
+    public void GenerateGrid()
     {
         tiles = new Dictionary<Vector2, Tile>();
         for (int x = 0; x < width; x++)
