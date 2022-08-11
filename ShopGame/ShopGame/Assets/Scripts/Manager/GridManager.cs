@@ -11,6 +11,9 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private Transform cam;
 
+    //JustToOrganizeTiles
+    public Transform TileFolder;
+
     private Dictionary<Vector2, Tile> tiles;
 
     private void Awake()
@@ -29,6 +32,7 @@ public class GridManager : MonoBehaviour
                 spawnedTile.x = x; 
                 spawnedTile.y = y;
                 spawnedTile.name = $"Tile {x} {y}";
+                spawnedTile.transform.SetParent(TileFolder, true);
 
                 bool isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
 

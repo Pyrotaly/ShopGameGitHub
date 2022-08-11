@@ -16,7 +16,7 @@ public class UISupplier : MonoBehaviour
 
     [SerializeField] private float shopItemHeight;
 
-    public List<BaseItems> ItemList;
+    public List<BaseItems> SellingItemList;
 
     private void Awake()
     {
@@ -36,14 +36,14 @@ public class UISupplier : MonoBehaviour
     private void Start()
     {
         //Displays Items on Canvas 
-        for (int i = 0; i < ItemList.Count; i++) //There should be the same length for all data types
+        for (int i = 0; i < SellingItemList.Count; i++) //There should be the same length for all data types
         {
-            CreateItemButton(ItemList[i].ItemIcon, ItemList[i].ItemName, ItemList[i].ItemPrice, i);
+            CreateItemButton(SellingItemList[i], SellingItemList[i].ItemIcon, SellingItemList[i].ItemName, SellingItemList[i].ItemPrice, i);
         }
     }
 
-    //This is for only one menu
-    private void CreateItemButton(Sprite itemSprite, string itemName, float itemCost, int positionIndex)
+    //This is for only one menu, creates list of buttons for items
+    private void CreateItemButton(BaseItems item, Sprite itemSprite, string itemName, float itemCost, int positionIndex)
     {
         Transform shopItemTransform = Instantiate(shopItemTemplate1, container1);
         RectTransform shopItemRectTransform = shopItemTransform.GetComponent<RectTransform>();
@@ -53,8 +53,18 @@ public class UISupplier : MonoBehaviour
         shopItemTransform.Find("itemIcon").GetComponent<Image>().sprite = itemSprite;
         shopItemTransform.Find("itemName").GetComponent<TextMeshProUGUI>().SetText(itemName);
         shopItemTransform.Find("itemPrice").GetComponent<TextMeshProUGUI>().SetText(itemCost.ToString());
+
+        shopItemTransform.GetComponent<Button>().onClick.AddListener(delegate { TryBuyItem(item); });
     }
 
+    private void TryBuyItem(BaseItems itemType)
+    {
+        Debug.Log(itemType);
+        InventoryManager.instance.AddItem(itemType, 1);
+    }
+
+
+    //Changes what shop menu is
     public void RightClickTemp()
     {
         Sellable.gameObject.SetActive(false);

@@ -25,17 +25,6 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         _renderer.color = isOffset ? _offsetColor : _baseColor;
     }
 
-    //Legacy input system
-    //private void OnMouseEnter()
-    //{
-    //    highlight.SetActive(true);
-    //}
-
-    //private void OnMouseExit()
-    //{
-    //    highlight.SetActive(false);
-    //}
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         highlight.SetActive(true);
@@ -50,9 +39,11 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         Debug.Log($" {x} {y} " );
         
-        Instantiate(testingPrefab, new Vector3(x,y), Quaternion.identity);
 
-        if (eventData.button == PointerEventData.InputButton.Left) Debug.Log("leftMouseButtonPressed");
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            Instantiate(testingPrefab, new Vector3(x, y), Quaternion.identity);
+        }
         else Debug.Log("rightMouseButtonPressed");
     }
 }
