@@ -5,35 +5,102 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
-    //Money Amount //Sanity Amount
+    //Sanity Amount
+
+    public int MoneyAmount;
 
     //How many items the player has
-    public List<BaseItems> Stock;
+    public List<BaseItems> CheckItem;
+    public List<InventorySlot> Stock;
+
 
     private void Awake()
     {
         instance = this;
     }
 
+    private void Start()
+    {
+        MoneyAmount = 10000;
+    }
+
+    //Adding item to play list, through stocker or picking up items
     public void AddItem(BaseItems item, int amount)
     {
-        Stock.Add(item);
+        if (!CheckItem.Contains(item))
+        {
+            CheckItem.Add(item);
+            Stock.Add(new InventorySlot(item, amount));
+        }
+        else
+        {
+            for (int i = 0; i < Stock.Count; i++)
+            {
+                if (Stock[i].item == item)
+                {
+                    Stock[i].IncreaseValue();
+                    Debug.Log($"{item} stock = {Stock[i].amount}"); //Should say 2 at first
+                    break;
+                }
+            }
 
-        //Debug.Log("2");
-        //for (int i = 0; i < Container.Count; i++)
-        //{
-        //    if(Container[i].Item == item)
-        //    {
-        //        Container[i].AddAmount(amount);
-        //        Debug.Log("2");
-        //        break;
-        //    }
-        //    else
-        //    {
-        //        Container.Add(new InventorySlot(item, amount));
-        //        Debug.Log("1");
-        //    }
-        //}
+        }
+    }
+
+    public void RemoveItem(BaseItems item, int amount)
+    {
+        if (!CheckItem.Contains(item))
+        {
+            Debug.LogError("item not there need to worry");
+        }
+        else
+        {
+            for (int i = 0; i < Stock.Count; i++)
+            {
+                if (Stock[i].item == item)
+                {
+                    if (Stock[i].amount > 0)
+                    {
+                        Stock[i].DecreaseValue();
+                        Debug.Log($"{item} stock = {Stock[i].amount}");
+                    }
+                    else
+                    {
+                        Stock[i].amount = 0;
+                        CheckItem.Remove(item);
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    //Increase or decrease player money here
+    public void AdjustMoney(int amount) 
+    {
+        MoneyAmount += amount;
     }
 }
 
+[System.Serializable]
+public class InventorySlot
+{
+    public BaseItems item;
+    public int amount;
+
+    public InventorySlot(BaseItems item, int amount)
+    {
+        this.item = item;
+        this.amount = amount;
+    }
+
+    public void IncreaseValue()
+    {
+        amount++;
+    }
+
+    public void DecreaseValue()
+    {
+        amount--;
+    }
+}

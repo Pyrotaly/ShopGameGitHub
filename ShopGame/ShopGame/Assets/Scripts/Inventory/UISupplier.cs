@@ -59,7 +59,7 @@ public class UISupplier : MonoBehaviour
 
     private void TryBuyItem(BaseItems itemType)
     {
-        Debug.Log(itemType);
+        InventoryManager.instance.AdjustMoney(-1);
         InventoryManager.instance.AddItem(itemType, 1);
     }
 

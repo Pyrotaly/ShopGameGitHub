@@ -35,6 +35,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         highlight.SetActive(false);
     }
 
+    //Currently the only time player would click on a tile is during base building to place items down, or rotate
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log($" {x} {y} " );
@@ -44,6 +45,6 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             Instantiate(testingPrefab, new Vector3(x, y), Quaternion.identity);
         }
-        else Debug.Log("rightMouseButtonPressed");
+        else Debug.Log("right/middleMouseButtonPressed");
     }
 }
