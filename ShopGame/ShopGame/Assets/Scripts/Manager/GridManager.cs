@@ -21,6 +21,11 @@ public class GridManager : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
+    }
+
     public void GenerateGrid()
     {
         tiles = new Dictionary<Vector2, Tile>();
@@ -40,8 +45,6 @@ public class GridManager : MonoBehaviour
                 tiles[new Vector2(x, y)] = spawnedTile;
             }
         }
-
-        cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
     }
     
     public Tile GetTileAtPosition(Vector2 pos)
