@@ -8668,6 +8668,7 @@ GameObject:
   - component: {fileID: 1752790079}
   - component: {fileID: 1752790081}
   - component: {fileID: 1752790082}
+  - component: {fileID: 1752790083}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -8734,6 +8735,19 @@ MonoBehaviour:
   MoneyAmount: 0
   CheckItem: []
   Stock: []
+--- !u!114 &1752790083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752790078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea5add9eaf392f041a5e56331b35c560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 519420031}
 --- !u!1 &1759012028
 GameObject:
   m_ObjectHideFlags: 0
