@@ -20,7 +20,7 @@ public class MouseManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         testPos = new Vector2(Mathf.Round(worldPos.x), Mathf.Round(worldPos.y));
 
-        Debug.Log(testPos);
+        //Debug.Log(testPos);
     }
 
     //Hovering over something

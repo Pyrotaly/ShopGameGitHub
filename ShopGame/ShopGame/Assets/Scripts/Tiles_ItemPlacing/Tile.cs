@@ -6,7 +6,9 @@ using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler 
 {
-    public GameObject testingPrefab;
+    [SerializeField] private Transform testTransform;
+
+    private Transform thisTransform;
 
     [SerializeField] private Color _baseColor, _offsetColor;
     [SerializeField] private SpriteRenderer _renderer;
@@ -25,6 +27,13 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         _renderer.color = isOffset ? _offsetColor : _baseColor;
     }
 
+    public bool CanBuild() { return thisTransform == null; }
+
+    public void ClearTransform() { thisTransform = null; }
+
+    public void SetTransform(Transform transform) { thisTransform = transform; }
+
+    #region MouseLogic
     public void OnPointerEnter(PointerEventData eventData)
     {
         highlight.SetActive(true);
@@ -43,8 +52,17 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         //Temp placing thing on tile
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            Instantiate(testingPrefab, new Vector3(x, y), Quaternion.identity);
+            if (CanBuild())
+            {
+                Transform builtTransform = Instantiate(testTransform, new Vector3(x, y), Quaternion.identity);
+                SetTransform(builtTransform);
+            }
+            else
+            {
+                Debug.Log("cannot build here");
+            }
         }
         else Debug.Log("right/middleMouseButtonPressed");
     }
+    #endregion
 }
