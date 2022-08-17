@@ -40,7 +40,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         Debug.Log($" {x} {y} " );
         
-
+        //Temp placing thing on tile
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             Instantiate(testingPrefab, new Vector3(x, y), Quaternion.identity);
