@@ -1,21 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
-public class MouseManager : MonoBehaviour
+public class MouseManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     public Camera mainCam;
     private Vector3 worldPos;
 
     Vector3 testPos;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    public Action OnMouseHover, OnMouseDown, OnMouseUp;
+
     void Update()
     {
         worldPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -23,5 +21,21 @@ public class MouseManager : MonoBehaviour
         testPos = new Vector2(Mathf.Round(worldPos.x), Mathf.Round(worldPos.y));
 
         Debug.Log(testPos);
+    }
+
+    //Hovering over something
+    public void OnPointerEnter(PointerEventData eventData) 
+    {
+        OnMouseHover?.Invoke();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        OnMouseUp?.Invoke();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        OnMouseDown?.Invoke();
     }
 }

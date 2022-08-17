@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,5 @@ public class ProtoDesk : MonoBehaviour, IInteractable
 
     private void GameManagerActivateStore(GameState obj)
     {
-
     }
 }
