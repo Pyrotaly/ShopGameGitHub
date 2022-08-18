@@ -6,12 +6,11 @@ using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler 
 {
-    [SerializeField] private Transform testTransform;
-
+    [SerializeField] private List<PlacedObjectTypeSO> placedObjectTypeSOList;
     [SerializeField] private PlacedObjectTypeSO placeObjectTypeSO;
     private PlacedObjectTypeSO.Dir dir = PlacedObjectTypeSO.Dir.Down;
 
-    private Transform thisTransform;
+    private PlacedObject placedObject;
 
     [SerializeField] private Color _baseColor, _offsetColor;
     [SerializeField] private SpriteRenderer _renderer;
@@ -24,17 +23,17 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         _renderer = GetComponent<SpriteRenderer>();
     }
-
+        
     public void Init(bool isOffset)
     {
         _renderer.color = isOffset ? _offsetColor : _baseColor;
     }
 
-    public bool CanBuild() { return thisTransform == null; }
+    public bool CanBuild() { return placedObject == null; }
 
-    public void ClearTransform() { thisTransform = null; }
+    public void ClearPlacedObject() { placedObject = null; }
 
-    public void SetTransform(Transform transform) { thisTransform = transform; }
+    public void SetPlacedObject(PlacedObject placedObject) { this.placedObject = placedObject; }
 
     #region MouseLogic
     public void OnPointerEnter(PointerEventData eventData)
@@ -66,20 +65,15 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 {
                     canBuild = false;
                     break;
-                }
+                } 
             }
-
+    
             if (canBuild)
             {
-                Transform builtTransform =
-                    Instantiate(
-                        placeObjectTypeSO.prefab,
-                        new Vector3(x, y),
-                        Quaternion.Euler(0, 0, placeObjectTypeSO.GetRotationAngle(dir))
-                    );
+                PlacedObject placedObject = PlacedObject.Create(new Vector3(x, y), dir, placeObjectTypeSO);
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
-                    GridManager.instance.GetTileAtPosition(gridPosition).SetTransform(builtTransform);
+                    GridManager.instance.GetTileAtPosition(gridPosition).SetPlacedObject(placedObject);
                 }
             }
             else
@@ -90,12 +84,23 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         //Right mouse button rotates selected object, NOT IDEAL RN
         if (eventData.button == PointerEventData.InputButton.Right)
-        {
+        {   
             Debug.Log("hi");
             dir = PlacedObjectTypeSO.GetNextDir(dir);
         }
 
-
+        //Middle mouse click destroys things
+        if (eventData.button == PointerEventData.InputButton.Middle)
+        {
+            if (placedObject != null)
+            {
+                placedObject.DestroySelf();
+                foreach (Vector2Int gridPosition in gridPositionList)
+                {
+                    GridManager.instance.GetTileAtPosition(gridPosition).ClearPlacedObject();
+                }
+            }
+        }
     }
     #endregion
-}
+}   
