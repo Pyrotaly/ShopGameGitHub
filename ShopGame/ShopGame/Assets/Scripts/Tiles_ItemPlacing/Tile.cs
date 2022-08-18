@@ -8,6 +8,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 {
     [SerializeField] private Transform testTransform;
 
+    [SerializeField] private PlacedObjectTypeSO placeObjectTypeSO;
+    private PlacedObjectTypeSO.Dir dir = PlacedObjectTypeSO.Dir.Down;
+
     private Transform thisTransform;
 
     [SerializeField] private Color _baseColor, _offsetColor;
@@ -47,22 +50,52 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     //Currently the only time player would click on a tile is during base building to place items down, or rotate
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log($" {x} {y} " );
-        
+        //Debug.Log($" {x} {y} " );
+                                                                                    //Where this object is placed       //Direction of object
+        List<Vector2Int> gridPositionList = placeObjectTypeSO.GetGridPositionList(new Vector2Int(this.x, this.y), dir);
+
         //Temp placing thing on tile
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (CanBuild())
+
+            //Checks if any space when placing a new object is already occupied and then won't let player place
+            bool canBuild = true;
+            foreach (Vector2Int gridPosition in gridPositionList)
             {
-                Transform builtTransform = Instantiate(testTransform, new Vector3(x, y), Quaternion.identity);
-                SetTransform(builtTransform);
+                if (!GridManager.instance.GetTileAtPosition(gridPosition).CanBuild())
+                {
+                    canBuild = false;
+                    break;
+                }
+            }
+
+            if (canBuild)
+            {
+                Transform builtTransform =
+                    Instantiate(
+                        placeObjectTypeSO.prefab,
+                        new Vector3(x, y),
+                        Quaternion.Euler(0, 0, placeObjectTypeSO.GetRotationAngle(dir))
+                    );
+                foreach (Vector2Int gridPosition in gridPositionList)
+                {
+                    GridManager.instance.GetTileAtPosition(gridPosition).SetTransform(builtTransform);
+                }
             }
             else
             {
                 Debug.Log("cannot build here");
-            }
+            }   
         }
-        else Debug.Log("right/middleMouseButtonPressed");
+
+        //Right mouse button rotates selected object, NOT IDEAL RN
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            Debug.Log("hi");
+            dir = PlacedObjectTypeSO.GetNextDir(dir);
+        }
+
+
     }
     #endregion
 }
