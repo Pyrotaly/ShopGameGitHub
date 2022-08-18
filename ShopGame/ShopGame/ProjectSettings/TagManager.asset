@@ -13,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Interactable
-  - 
+  - Impassible
   - 
   - 
   - 
@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor
+    uniqueID: 1022484955
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
