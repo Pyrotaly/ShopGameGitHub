@@ -63,7 +63,7 @@ public class PlacedObjectTypeSO : ScriptableObject
         switch (dir)
         {
             default:
-            case Dir.Down:
+            case Dir.Down:  
             case Dir.Up:
                 for (int x = 0; x < length; x++)
                 {

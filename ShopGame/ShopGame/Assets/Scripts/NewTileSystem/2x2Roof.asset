@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameString: 2x2Roof
   prefab: {fileID: 6268479687402402334, guid: deae6a20935326b409a0e677b6002d1a, type: 3}
-  width: 2
+  length: 2
   height: 2
