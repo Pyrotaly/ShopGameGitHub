@@ -123,46 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!224 &296420048 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4301384452233266173, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-  m_PrefabInstance: {fileID: 4301384451942482221}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &297112243 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4301384452235203486, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-  m_PrefabInstance: {fileID: 4301384451942482221}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &297112244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297112243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Content: {fileID: 1848119194}
-  m_Horizontal: 0
-  m_Vertical: 1
-  m_MovementType: 2
-  m_Elasticity: 0.1
-  m_Inertia: 1
-  m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
-  m_Viewport: {fileID: 296420048}
-  m_HorizontalScrollbar: {fileID: 0}
-  m_VerticalScrollbar: {fileID: 1680302317}
-  m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 0
-  m_HorizontalScrollbarSpacing: 0
-  m_VerticalScrollbarSpacing: 0
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &887393353
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,17 +403,6 @@ Transform:
   m_Father: {fileID: 887393354}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1680302317 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4301384453483979200, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-  m_PrefabInstance: {fileID: 4301384451942482221}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1688346365
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,16 +430,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1688346365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 2064916234097673511, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: -1967631576421560919, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 8056856818456041789, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: 3279352641294131588, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: 3837173908680883260, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 4502412055082496612, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 4754684134866288074, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
 --- !u!114 &1688346367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,11 +560,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &1848119194 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4301384453382704823, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-  m_PrefabInstance: {fileID: 4301384451942482221}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1904891444
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,26 +771,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4301384452126087874, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4301384452126087874, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4301384452126087874, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 4301384452126087874, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4301384452235203486, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4301384453226206257, guid: 44235244323fd484393abc83f0ff0104, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -846,22 +778,6 @@ PrefabInstance:
     - target: {fileID: 4301384453226206257, guid: 44235244323fd484393abc83f0ff0104, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4301384453382704823, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4301384453382704823, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4301384453382704823, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.0000042915344
-      objectReference: {fileID: 0}
-    - target: {fileID: 4301384453483979206, guid: 44235244323fd484393abc83f0ff0104, type: 3}
-      propertyPath: m_Name
-      value: VerticalScrollbar
       objectReference: {fileID: 0}
     - target: {fileID: 4301384453557219635, guid: 44235244323fd484393abc83f0ff0104, type: 3}
       propertyPath: m_Pivot.x
