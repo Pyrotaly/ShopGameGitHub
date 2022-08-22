@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = " new PlaceableItem", menuName = "Item/PlaceableItem")]
-public class PlacedObjectTypeSO : ScriptableObject
+[CreateAssetMenu(fileName = " new PlaceableItem1", menuName = "Item/PlaceableItem1")]
+public class PlacedObjectTypeSOTest : ScriptableObject
 {
+    public PlacedObject placedObject;
+
     public static Dir GetNextDir(Dir dir)
     {
         switch (dir)
@@ -30,6 +32,7 @@ public class PlacedObjectTypeSO : ScriptableObject
     //public Transform visual;
     public int length;
     public int height;
+
 
     public int GetRotationAngle(Dir dir)
     {
@@ -62,7 +65,7 @@ public class PlacedObjectTypeSO : ScriptableObject
         switch (dir)
         {
             default:
-            case Dir.Down:  
+            case Dir.Down:
             case Dir.Up:
                 for (int x = 0; x < length; x++)
                 {

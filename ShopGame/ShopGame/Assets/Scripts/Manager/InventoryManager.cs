@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,11 @@ public class InventoryManager : MonoBehaviour
     public int MoneyAmount;
 
     //How many items the player has
-    public List<BaseItems> CheckItem;
+    public List<BaseItems> CheckItem; //Can s
     public List<InventorySlot> Stock;
 
+    //Right now, everytime altering item list, refresh scrollbar screen
+    public Action OnAlteringItemList;
 
     private void Awake()
     {
@@ -21,7 +24,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        MoneyAmount = 10000;
+        MoneyAmount = 10000;  //If I load game, does this keep setting money amount?
     }
 
     //Adding item to play list, through stocker or picking up items
@@ -43,8 +46,9 @@ public class InventoryManager : MonoBehaviour
                     break;
                 }
             }
-
         }
+
+        OnAlteringItemList?.Invoke();
     }
 
     public void RemoveItem(BaseItems item, int amount)
@@ -73,6 +77,8 @@ public class InventoryManager : MonoBehaviour
                 }
             }
         }
+
+        OnAlteringItemList?.Invoke();
     }
 
     //Increase or decrease player money here

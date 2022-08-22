@@ -39,7 +39,7 @@ public class GridManager : MonoBehaviour
                 spawnedTile.name = $"Tile {x} {y}";
                 spawnedTile.transform.SetParent(TileFolder, true);
 
-                bool isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
+                bool isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);      //Every other tile will have diff color
 
                 spawnedTile.Init(isOffset);
                 tiles[new Vector2(x, y)] = spawnedTile;

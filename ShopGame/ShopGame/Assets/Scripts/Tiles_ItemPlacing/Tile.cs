@@ -6,8 +6,10 @@ using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler 
 {
-    [SerializeField] private List<PlacedObjectTypeSO> placedObjectTypeSOList;
-    [SerializeField] private PlacedObjectTypeSO placeObjectTypeSO;
+    //[SerializeField] private List<PlacedObjectTypeSO> placedObjectTypeSOList;
+
+    //Temporarily, other scripts can alter the placeObjectTypeSO, will have a different placement manager script handle placing items
+    public PlacedObjectTypeSO placeObjectTypeSO;
     private PlacedObjectTypeSO.Dir dir = PlacedObjectTypeSO.Dir.Down;
 
     private PlacedObject placedObject;
@@ -49,14 +51,12 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     //Currently the only time player would click on a tile is during base building to place items down, or rotate
     public void OnPointerDown(PointerEventData eventData)
     {
-        //Debug.Log($" {x} {y} " );
-                                                                                    //Where this object is placed       //Direction of object
+                                                                         //Where this object is placed       //Direction of object
         List<Vector2Int> gridPositionList = placeObjectTypeSO.GetGridPositionList(new Vector2Int(this.x, this.y), dir);
 
         //Temp placing thing on tile
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-
             //Checks if any space when placing a new object is already occupied and then won't let player place
             bool canBuild = true;
             foreach (Vector2Int gridPosition in gridPositionList)
