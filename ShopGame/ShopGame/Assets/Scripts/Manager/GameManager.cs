@@ -49,5 +49,6 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     PlayerWalk,    //When the player is in control
-    GenerateGrid
+    GenerateGrid,
+    BaseBuild
 }

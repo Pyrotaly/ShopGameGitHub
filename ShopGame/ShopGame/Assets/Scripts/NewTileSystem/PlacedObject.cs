@@ -9,7 +9,7 @@ public class PlacedObject : MonoBehaviour
 
     public static PlacedObject Create(Vector3 worldPosition, PlacedObjectTypeSO.Dir dir, PlacedObjectTypeSO placedObjectTypeSO)
     {
-        Transform placedObjectTransform = Instantiate(placedObjectTypeSO.prefab, worldPosition, 
+        Transform placedObjectTransform = Instantiate(placedObjectTypeSO.prefab, worldPosition,   //need to instantiate prefab based on degree
             Quaternion.Euler(0, 0, placedObjectTypeSO.GetRotationAngle(dir)));  
 
         PlacedObject placedObject = placedObjectTransform.GetComponent<PlacedObject>();

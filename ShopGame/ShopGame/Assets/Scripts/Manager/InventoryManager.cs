@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
     public int MoneyAmount;
 
     //How many items the player has
-    public List<BaseItems> CheckItem; //Can s
+    public List<BaseItems> CheckItem; 
     public List<InventorySlot> Stock;
 
     //Right now, everytime altering item list, refresh scrollbar screen

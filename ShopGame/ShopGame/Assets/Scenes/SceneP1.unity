@@ -8818,7 +8818,6 @@ GameObject:
   - component: {fileID: 1752790079}
   - component: {fileID: 1752790081}
   - component: {fileID: 1752790082}
-  - component: {fileID: 1752790083}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -8910,19 +8909,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca9c30b4d09a14348bf4f38a45fc14e8, type: 2}
   - {fileID: 11400000, guid: eeeb1b360212e4e4dadd8b79f59af842, type: 2}
   Stock: []
---- !u!114 &1752790083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752790078}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5add9eaf392f041a5e56331b35c560, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCam: {fileID: 519420031}
 --- !u!1 &1759012028
 GameObject:
   m_ObjectHideFlags: 0
@@ -9586,15 +9572,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1876681389}
-  - component: {fileID: 1876681388}
   - component: {fileID: 1876681390}
+  - component: {fileID: 1876681388}
   m_Layer: 0
-  m_Name: CustomCursor
+  m_Name: MouseController+Cursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1876681388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9604,11 +9590,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1876681387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecb65cd9b3dce0b4392c81113ffe1b35, type: 3}
+  m_Script: {fileID: 11500000, guid: ea5add9eaf392f041a5e56331b35c560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zPosition: 0
   mainCam: {fileID: 519420031}
+  zPosition: 0
 --- !u!4 &1876681389
 Transform:
   m_ObjectHideFlags: 0
@@ -10901,7 +10887,7 @@ PrefabInstance:
     - target: {fileID: 7581979105794053099, guid: 44235244323fd484393abc83f0ff0104, type: 3}
       propertyPath: customCursor
       value: 
-      objectReference: {fileID: 1876681388}
+      objectReference: {fileID: 0}
     - target: {fileID: 7581979105794053099, guid: 44235244323fd484393abc83f0ff0104, type: 3}
       propertyPath: buttonTemplate
       value: 

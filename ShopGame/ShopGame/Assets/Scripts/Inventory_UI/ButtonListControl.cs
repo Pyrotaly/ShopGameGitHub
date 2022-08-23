@@ -16,25 +16,24 @@ public class ButtonListControl : MonoBehaviour
 
     [SerializeField] private CustomCursor customCursor;
 
-    private List<BaseItems> SellingItemList;
+    private List<BaseItems> ScrollBarList;         //I am duplicating list when I just want to refer to list but less keystrokes!!!
     private Action testAction;
 
     private void Start()
     {
-        SellingItemList = InventoryManager.instance.CheckItem;
-
-        Debug.Log(SellingItemList.Count);
-
         RefreshScrollBarMenu();
     }
 
     private void RefreshScrollBarMenu()
     {
-        for (int i = 0; i < SellingItemList.Count; i++) //There should be the same length for all data types
+        ScrollBarList = InventoryManager.instance.CheckItem;  //I am duplicating list when I just want to refer to list but less keystrokes!!!
+
+        for (int i = 0; i < ScrollBarList.Count; i++) //There should be the same length for all data types
         {
-            CreateItemButton(SellingItemList[i], SellingItemList[i].ItemIcon, SellingItemList[i].ItemName, SellingItemList[i].ItemPrice, i);
-            
+            CreateItemButton(ScrollBarList[i], ScrollBarList[i].ItemIcon, ScrollBarList[i].ItemName, ScrollBarList[i].ItemPrice, i);
         }
+
+        Debug.Log(ScrollBarList.Count);
     }
 
     //This is for only one menu, creates list of buttons for items
@@ -48,7 +47,6 @@ public class ButtonListControl : MonoBehaviour
         shopItemTransform.Find("itemPrice").GetComponent<TextMeshProUGUI>().SetText(itemCost.ToString());
 
         shopItemTransform.GetComponent<Button>().onClick.AddListener(delegate { TestingPlacingItem(item); });
-        //shopItemTransform.GetComponent<Button>().onClick.AddListener(delegate { testAction(); });
     }
 
     private void TestingPlacingItem(BaseItems itemType)
@@ -56,7 +54,6 @@ public class ButtonListControl : MonoBehaviour
         //This makes cursor icon into the item player selected, not sure if it is smart to handle it here
         customCursor.gameObject.SetActive(true);
         customCursor.GetComponent<SpriteRenderer>().sprite = itemType.ItemIcon;
-        Debug.Log("HELLO");
         //Cursor.visible = false;
     }
 }

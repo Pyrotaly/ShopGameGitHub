@@ -26,7 +26,10 @@ public class PlacedObjectTypeSO : ScriptableObject
     }
 
     public string nameString;
-    public Transform prefab;
+    public Transform prefab; //prefab 0 degree //Should make this null later, no rotated models atm
+
+    [SerializeField] private Transform[] prefabRotationModels; //only four
+
     //public Transform visual;
     public int length;
     public int height;
@@ -62,10 +65,18 @@ public class PlacedObjectTypeSO : ScriptableObject
         switch (dir)
         {
             default:
-            case Dir.Down: return new Vector2Int(0, 0);
-            case Dir.Left: return new Vector2Int(0, length);
-            case Dir.Up: return new Vector2Int(length, height);
-            case Dir.Right: return new Vector2Int(height, 0);
+            case Dir.Down:
+                //try { prefab = prefabRotationModels[0]; } catch { Debug.LogError("No rotated model"); }
+                return new Vector2Int(0, 0);
+            case Dir.Left:
+                //try { prefab = prefabRotationModels[1]; } catch { Debug.LogError("No rotated model"); }
+                return new Vector2Int(0, length);
+            case Dir.Up:
+                //try { prefab = prefabRotationModels[2]; } catch { Debug.LogError("No rotated model"); }
+                return new Vector2Int(length, height);
+            case Dir.Right:
+                //try { prefab = prefabRotationModels[3]; } catch { Debug.LogError("No rotated model"); }
+                return new Vector2Int(height, 0);
         }
     }
 
