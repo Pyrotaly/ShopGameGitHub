@@ -7,14 +7,14 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager instance;
 
-    [SerializeField] private int width, height;
-    [SerializeField] private Tile tilePrefab;
+    [SerializeField] private int width, height;        //When upgrading the shop, make this public?
+    [SerializeField] private BaseBuildTile tilePrefab;
     [SerializeField] private Transform cam;
 
     //JustToOrganizeTiles
     public Transform TileFolder;
 
-    private Dictionary<Vector2, Tile> tiles;
+    private Dictionary<Vector2, BaseBuildTile> tiles;
 
     private void Awake()
     {
@@ -24,17 +24,19 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
+        GenerateGrid();
     }
 
-    public void GenerateGrid()
+    //Do i need to make another one for the shop?  Will the shop and the personal room be in the same scene?
+    private void GenerateGrid()
     {
-        tiles = new Dictionary<Vector2, Tile>();
+        tiles = new Dictionary<Vector2, BaseBuildTile>();
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                Tile spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity);
-                spawnedTile.x = x; 
+                BaseBuildTile spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity);
+                spawnedTile.x = x;
                 spawnedTile.y = y;
                 spawnedTile.name = $"Tile {x} {y}";
                 spawnedTile.transform.SetParent(TileFolder, true);
@@ -46,10 +48,14 @@ public class GridManager : MonoBehaviour
             }
         }
     }
-    
-    public Tile GetTileAtPosition(Vector2 pos)
+
+    public BaseBuildTile GetTileAtPosition(Vector2 pos)
     {
-        if (tiles.TryGetValue(pos, out Tile tile)) return tile;
+        if (tiles.TryGetValue(pos, out BaseBuildTile tile)) return tile;
         return null;
     }
+
+    public void TurnOffTiles() { TileFolder.gameObject.SetActive(false); }
+
+    public void TurnOnTiles() { TileFolder.gameObject.SetActive(true); }
 }

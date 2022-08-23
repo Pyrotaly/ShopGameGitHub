@@ -84,6 +84,9 @@ public class PlacedObjectTypeSO : ScriptableObject
     public List<Vector2Int> GetGridPositionList(Vector2Int offset, Dir dir)
     {
         List<Vector2Int> gridPositionList = new List<Vector2Int>();
+
+        if (canRotate) dir = Dir.Down;
+
         switch (dir)
         {
             default:

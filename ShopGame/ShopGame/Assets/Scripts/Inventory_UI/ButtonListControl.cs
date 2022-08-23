@@ -14,7 +14,7 @@ public class ButtonListControl : MonoBehaviour
 
     [SerializeField] private Transform newButtonTemplate;
 
-    [SerializeField] private CustomCursor customCursor;
+    //[SerializeField] private CustomCursor customCursor;
 
     private List<BaseItems> ScrollBarList;         //I am duplicating list when I just want to refer to list but less keystrokes!!!
     private Action testAction;
@@ -52,8 +52,8 @@ public class ButtonListControl : MonoBehaviour
     private void TestingPlacingItem(BaseItems itemType)
     {
         //This makes cursor icon into the item player selected, not sure if it is smart to handle it here
-        customCursor.gameObject.SetActive(true);
-        customCursor.GetComponent<SpriteRenderer>().sprite = itemType.ItemIcon;
+        //customCursor.gameObject.SetActive(true);
+        //customCursor.GetComponent<SpriteRenderer>().sprite = itemType.ItemIcon;
         //Cursor.visible = false;
     }
 }

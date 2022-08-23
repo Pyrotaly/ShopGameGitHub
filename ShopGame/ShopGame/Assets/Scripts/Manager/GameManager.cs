@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
             case GameState.PlayerWalk:
                 break;
             case GameState.GenerateGrid:
-                GridManager.instance.GenerateGrid();
+                GridManager.instance.TurnOnTiles();
                 break;
             default:
                 break;
@@ -49,6 +49,6 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     PlayerWalk,    //When the player is in control
-    GenerateGrid,
-    BaseBuild
+    GenerateGrid,   //This is essentially base build
+    SupplierMenu
 }

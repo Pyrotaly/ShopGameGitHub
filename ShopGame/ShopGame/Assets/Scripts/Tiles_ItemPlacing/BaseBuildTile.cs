@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler 
+public class BaseBuildTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler 
 {
     //[SerializeField] private List<PlacedObjectTypeSO> placedObjectTypeSOList;
 
@@ -37,6 +37,8 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void SetPlacedObject(PlacedObject placedObject) { this.placedObject = placedObject; }
 
+
+    //Controller could use virtual mouse to use the OnPointer events
     #region MouseLogic
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -47,14 +49,12 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         highlight.SetActive(false);
     }
-
-    //Currently the only time player would click on a tile is during base building to place items down, or rotate
+  
     public void OnPointerDown(PointerEventData eventData)
-    {
-                                                                         //Where this object is placed       //Direction of object
-        List<Vector2Int> gridPositionList = placeObjectTypeSO.GetGridPositionList(new Vector2Int(this.x, this.y), dir);
+    {  
+        List<Vector2Int> gridPositionList = placeObjectTypeSO.GetGridPositionList(new Vector2Int(x, y), dir); //first parameter gets this tile position
 
-        //Temp placing thing on tile
+        #region HandlePlacement
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             //Checks if any space when placing a new object is already occupied and then won't let player place
@@ -81,14 +81,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 Debug.Log("cannot build here");
             }   
         }
+        #endregion
 
-        //Right mouse button rotates selected object, NOT IDEAL RN
-        if (eventData.button == PointerEventData.InputButton.Right)
-        {   
-            Debug.Log("hi");
-            dir = PlacedObjectTypeSO.GetNextDir(dir);
-        }
-
+        #region HandleDestroy
         //Middle mouse click destroys things
         if (eventData.button == PointerEventData.InputButton.Middle)
         {
@@ -101,6 +96,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 }
             }
         }
+        #endregion
+
+        //NO ROTATING, PUT ROTATING ON ANOTHER SCRIPT, NOT TILE BASE BUILD
     }
     #endregion
 }   
