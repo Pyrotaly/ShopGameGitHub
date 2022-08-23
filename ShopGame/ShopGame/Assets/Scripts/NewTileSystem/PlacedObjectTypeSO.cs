@@ -31,16 +31,30 @@ public class PlacedObjectTypeSO : ScriptableObject
     public int length;
     public int height;
 
+    [SerializeField] private bool canRotate;
+
     public int GetRotationAngle(Dir dir)
     {
-        switch (dir)
+        if (canRotate)
         {
-            default:
-            case Dir.Down: return 0;
-            case Dir.Left: return 90;
-            case Dir.Up: return 180;
-            case Dir.Right: return 270;
+            switch (dir)
+            {
+                default:
+                case Dir.Down: return 0;
+                case Dir.Left: return 90;
+                case Dir.Up: return 180;
+                case Dir.Right: return 270;
+            }
+
+            //return dir switch             //What is this
+            //{
+            //    Dir.Left => 90,
+            //    Dir.Up => 180,
+            //    Dir.Right => 270,
+            //    _ => 0,
+            //};
         }
+        return 0;
     }
 
     public Vector2Int GetRotationOffset(Dir dir)
