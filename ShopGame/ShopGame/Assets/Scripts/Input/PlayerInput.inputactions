@@ -181,6 +181,17 @@
                     "action": "MouseTest",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "81914fb8-14dc-4f54-a39a-858fdb015cbc",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "MouseTest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

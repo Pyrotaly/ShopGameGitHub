@@ -99,13 +99,6 @@ public class BaseBuildTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         #endregion
 
         //NO ROTATING, PUT ROTATING ON ANOTHER SCRIPT, NOT TILE BASE BUILD
-
-        ////Right mouse button rotates selected object, NOT IDEAL RN
-        //if (eventData.button == PointerEventData.InputButton.Right)
-        //{
-        //    Debug.Log("hi");
-        //    dir = PlacedObjectTypeSO.GetNextDir(dir);
-        //}
     }
     #endregion
 }   

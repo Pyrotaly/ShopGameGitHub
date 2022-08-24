@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
-public class MouseManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public class MouseManager : MonoBehaviour
 {
     public Camera mainCam;
     private Vector3 worldPos;
@@ -24,7 +24,7 @@ public class MouseManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         transform.position = new Vector3(worldPos.x, worldPos.y, zPosition);          //Exact mouse position, used for changing cursor icon
     }
 
-    //Hovering over something
+    //Hovering over something //WIP MOUSE NEEDS THE UNITY INPUT SYSTEM MANAGER
     public void OnPointerEnter(PointerEventData eventData) 
     {
         OnMouseHover?.Invoke();
@@ -37,6 +37,7 @@ public class MouseManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("hi");
         OnMouseDown?.Invoke();
     }
 }
