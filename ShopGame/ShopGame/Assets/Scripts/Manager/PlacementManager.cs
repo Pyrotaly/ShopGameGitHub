@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class PlacementManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //Handles mouse visuals and clicking
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
