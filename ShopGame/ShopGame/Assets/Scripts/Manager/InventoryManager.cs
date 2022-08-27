@@ -48,7 +48,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-        OnAlteringItemList?.Invoke();
+        OnAlteringItemList?.Invoke();  //Make a sound or something idk
     }
 
     public void RemoveItem(BaseItems item, int amount)

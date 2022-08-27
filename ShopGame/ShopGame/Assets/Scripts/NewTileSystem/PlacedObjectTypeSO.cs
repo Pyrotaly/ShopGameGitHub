@@ -26,11 +26,7 @@ public class PlacedObjectTypeSO : ScriptableObject
     }
 
     public string nameString;
-    public Transform prefab; //prefab 0 degree //Should make this null later, no rotated models atm
-
-    [SerializeField] private Transform[] prefabRotationModels; //only four
-
-    //public Transform visual;
+    public Transform prefab; 
     public int length;
     public int height;
 
@@ -43,19 +39,15 @@ public class PlacedObjectTypeSO : ScriptableObject
             switch (dir)
             {
                 default:
-                case Dir.Down: return 0;
-                case Dir.Left: return 90;
-                case Dir.Up: return 180;
-                case Dir.Right: return 270;
+                case Dir.Down: 
+                    return 0;
+                case Dir.Left: 
+                    return 90;
+                case Dir.Up: 
+                    return 180;
+                case Dir.Right: 
+                    return 270;
             }
-
-            //return dir switch             //What is this
-            //{
-            //    Dir.Left => 90,
-            //    Dir.Up => 180,
-            //    Dir.Right => 270,
-            //    _ => 0,
-            //};
         }
         return 0;
     }

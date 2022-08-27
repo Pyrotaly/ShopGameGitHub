@@ -30,9 +30,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "MouseTest",
+                    "name": "MouseLeft",
                     "type": "Button",
                     "id": "ad759c24-2abb-48f8-9dec-11ef940957c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MouseRight",
+                    "type": "Button",
+                    "id": "77050452-53a0-4d38-859d-c877cd10af3a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -178,7 +186,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "MouseTest",
+                    "action": "MouseLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -189,7 +197,34 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "MouseTest",
+                    "action": "MouseRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "BaseBuilding?",
+            "id": "b8be20e2-00c3-4012-aa8a-2fc7f4a34cd0",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "1f53f483-dfdb-42ae-a9cf-a03659ace454",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "743a86b1-66d9-4e44-83fc-56de0abd84fe",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

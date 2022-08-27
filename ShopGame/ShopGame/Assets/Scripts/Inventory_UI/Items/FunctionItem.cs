@@ -5,4 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = " new FunctionItem", menuName = "Item/Function")]
 public class FunctionItem : BaseItems
 {
+    public PlacedObjectTypeSO placedObjectTypeSO;
 }

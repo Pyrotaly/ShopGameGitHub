@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cbebfe73cae7a54a96b3dfbc51eb752, type: 3}
-  m_Name: 2x2Roof
+  m_Script: {fileID: 11500000, guid: 22304c4433137dc46b342c1b610198b3, type: 3}
+  m_Name: new PlaceableItem1
   m_EditorClassIdentifier: 
-  nameString: 2x2Roof
+  placedObject: {fileID: 0}
+  nameString: 
   prefab: {fileID: 0}
-  length: 2
-  height: 2
-  canRotate: 0
+  length: 0
+  height: 0

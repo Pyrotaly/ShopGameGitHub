@@ -11,10 +11,9 @@ public class GridManager : MonoBehaviour
     [SerializeField] private BaseBuildTile tilePrefab;
     [SerializeField] private Transform cam;
 
-    //Add more paremeter of more tiles that will be walls
+    //Add more paremeter of more tiles that will be walls, maybe make some of them occupied
 
-    //JustToOrganizeTiles
-    public Transform TileFolder;
+    public Transform TileFolder;     //JustToOrganizeTiles
 
     private Dictionary<Vector2, BaseBuildTile> tiles;
 

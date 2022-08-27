@@ -6,9 +6,7 @@ using UnityEngine.EventSystems;
 
 public class BaseBuildTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler 
 {
-    //[SerializeField] private List<PlacedObjectTypeSO> placedObjectTypeSOList;
-
-    //Temporarily, other scripts can alter the placeObjectTypeSO, will have a different placement manager script handle placing items
+    //FurnitureList? will directly alter what placedObjectTypeSO is
     public PlacedObjectTypeSO placeObjectTypeSO;
     private PlacedObjectTypeSO.Dir dir = PlacedObjectTypeSO.Dir.Down;
 
@@ -99,6 +97,7 @@ public class BaseBuildTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         #endregion
 
         //NO ROTATING, PUT ROTATING ON ANOTHER SCRIPT, NOT TILE BASE BUILD
+        //dir = PlacedObjectTypeSO.GetNextDir(dir);
     }
     #endregion
 }   

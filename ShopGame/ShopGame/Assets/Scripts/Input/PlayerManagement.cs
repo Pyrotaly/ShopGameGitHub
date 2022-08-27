@@ -110,12 +110,12 @@ public class PlayerManagement : MonoBehaviour
 
         //Temporary Flip Manager  https://www.youtube.com/watch?v=Cr-j7EoM8bg go here for better flip 
 
-        if (RawMovementInput.x > 0.6) 
+        if (RawMovementInput.x > 0.6)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
 
-        if (RawMovementInput.x < -0.6) 
+        if (RawMovementInput.x < -0.6)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }

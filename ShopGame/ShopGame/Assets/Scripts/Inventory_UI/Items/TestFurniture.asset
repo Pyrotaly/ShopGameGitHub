@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cbebfe73cae7a54a96b3dfbc51eb752, type: 3}
-  m_Name: 2x2Roof
+  m_Script: {fileID: 11500000, guid: 844c4049e798e2743b95e1681722102d, type: 3}
+  m_Name: TestFurniture
   m_EditorClassIdentifier: 
-  nameString: 2x2Roof
-  prefab: {fileID: 0}
-  length: 2
-  height: 2
-  canRotate: 0
+  ItemIcon: {fileID: 0}
+  ItemName: 
+  ItemId: 0
+  ItemPrice: 0
+  ItemRobChance: 0
+  placedObjectTypeSO: {fileID: 0}

@@ -8,5 +8,5 @@ public abstract class BaseItems : ScriptableObject
     public string ItemName;
     public int ItemId;
     public float ItemPrice;
-    public float ItemRobChance; 
+    public float ItemRobChance;
 }

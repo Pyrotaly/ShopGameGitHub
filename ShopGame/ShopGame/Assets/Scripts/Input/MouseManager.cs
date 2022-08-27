@@ -16,6 +16,12 @@ public class MouseManager : MonoBehaviour
 
     public Action OnMouseHover, OnMouseDown, OnMouseUp;
 
+    //BaseBuildingParameters
+    public PlacedObjectTypeSO placeObjectTypeSO;
+    public PlacedObjectTypeSO.Dir dir = PlacedObjectTypeSO.Dir.Down;
+
+    //GunManager
+
     void Update()
     {
         worldPos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -24,20 +30,19 @@ public class MouseManager : MonoBehaviour
         transform.position = new Vector3(worldPos.x, worldPos.y, zPosition);          //Exact mouse position, used for changing cursor icon
     }
 
-    //Hovering over something //WIP MOUSE NEEDS THE UNITY INPUT SYSTEM MANAGER
-    public void OnPointerEnter(PointerEventData eventData) 
+    public void OnRightClickInput(InputAction.CallbackContext context)
     {
-        OnMouseHover?.Invoke();
+
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnLeftClickInput(InputAction.CallbackContext context)
     {
-        OnMouseUp?.Invoke();
+
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    //While not a mouse button, having base building rotation applied here is good          //Maybe only for base building action map
+    public void OnRotateInput(InputAction.CallbackContext context)   //This could be the key R
     {
-        Debug.Log("hi");
-        OnMouseDown?.Invoke();
+        dir = PlacedObjectTypeSO.GetNextDir(dir);
     }
 }
