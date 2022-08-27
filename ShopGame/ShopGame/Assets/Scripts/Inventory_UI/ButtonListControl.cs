@@ -33,7 +33,7 @@ public abstract class ButtonListControl : MonoBehaviour
             CreatedButtons.Clear();
         }
 
-        ScrollBarList = InventoryManager.instance.CheckItem;  //For furniture, the list is based on Inventory, supplier will be like Receattear
+        SetList();
 
         for (int i = 0; i < ScrollBarList.Count; i++) //There should be the same length for all data types
         {
@@ -57,5 +57,7 @@ public abstract class ButtonListControl : MonoBehaviour
     }
 
     protected abstract void TestingPlacingItem(BaseItems itemType);
+
+    protected abstract void SetList();
 }
 

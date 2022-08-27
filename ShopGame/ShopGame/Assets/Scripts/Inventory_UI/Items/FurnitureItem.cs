@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = " new FunctionItem", menuName = "Item/Function")]
-public class FunctionItem : BaseItems
+public class FurnitureItem : BaseItems
 {
     public PlacedObjectTypeSO placedObjectTypeSO;
 }

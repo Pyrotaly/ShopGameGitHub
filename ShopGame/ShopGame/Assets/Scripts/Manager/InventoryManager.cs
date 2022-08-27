@@ -10,12 +10,10 @@ public class InventoryManager : MonoBehaviour
 
     public int MoneyAmount;
 
-    //How many items the player has
-    public List<BaseItems> CheckItem; 
+    public List<BaseItems> CheckItem;    //How many items the player has
     public List<InventorySlot> Stock;
 
-    //Right now, everytime altering item list, refresh scrollbar screen
-    public Action OnAlteringItemList;
+    public Action OnAlteringItemList;      //Right now, everytime altering item list, refresh scrollbar screen
 
     private void Awake()
     {
@@ -27,9 +25,20 @@ public class InventoryManager : MonoBehaviour
         MoneyAmount = 10000;  //If I load game, does this keep setting money amount?
     }
 
-    //Adding item to play list, through stocker or picking up items
+    //Adding item to play list, through stocker or picking up items  //Might need downcasting to organize items
     public void AddItem(BaseItems item, int amount)
     {
+        if (item is FurnitureItem functionItem)
+        {
+            //Add to list
+        }
+
+        //if (item is FunctionItem)
+        //{
+        //    FunctionItem functionItem = (FunctionItem)item;
+        //    Debug.Log("HHAHA");
+        //}
+
         if (!CheckItem.Contains(item))
         {
             CheckItem.Add(item);
@@ -48,7 +57,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-        OnAlteringItemList?.Invoke();  //Make a sound or something idk
+        OnAlteringItemList?.Invoke();  //Refresh scrollmenu
     }
 
     public void RemoveItem(BaseItems item, int amount)

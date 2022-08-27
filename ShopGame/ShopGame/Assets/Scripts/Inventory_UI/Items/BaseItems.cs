@@ -10,3 +10,5 @@ public abstract class BaseItems : ScriptableObject
     public float ItemPrice;
     public float ItemRobChance;
 }
+
+//Supplier selling item

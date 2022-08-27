@@ -4,6 +4,6 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = " new DecorItem", menuName = "Item/Decor")]
-public class DecorItem : BaseItems
+public class PersonalRoomItem : BaseItems
 {
 }

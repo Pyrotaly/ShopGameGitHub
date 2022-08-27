@@ -13,8 +13,15 @@ public class FurnitureListController : ButtonListControl
         RefreshScrollBarMenu();
 
         //bbt.placeObjectTypeSO = itemType.placedObjectTypeSO;
+        InventoryManager.instance.AddItem(itemType, 3);
+
 
         mouseManager.gameObject.SetActive(true);
         mouseManager.GetComponent<SpriteRenderer>().sprite = itemType.ItemIcon;
+    }
+
+    protected override void SetList()
+    {
+        ScrollBarList = InventoryManager.instance.CheckItem;  //For furniture, the list is based on Inventory, supplier will be like Receattear
     }
 }

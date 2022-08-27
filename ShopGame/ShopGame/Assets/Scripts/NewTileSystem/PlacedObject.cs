@@ -23,25 +23,26 @@ public class PlacedObject : MonoBehaviour
         return placedObject;
     }
 
+    //Sets sprite to correct rotation
     private void Start()
     {
-        //Too lazy to do smart way
-        if (dir == PlacedObjectTypeSO.Dir.Down)
-        {
-            sR.sprite = spriteList[0];
-        }
-        else if (dir == PlacedObjectTypeSO.Dir.Left)
-        {
-            sR.sprite = spriteList[1];
-        }
-        else if (dir == PlacedObjectTypeSO.Dir.Up)
-        {
-            sR.sprite = spriteList[2];
-        }
-        else //Right
-        {
-            sR.sprite = spriteList[3];
-        }
+        ////Too lazy to do smart way
+        //if (dir == PlacedObjectTypeSO.Dir.Down)
+        //{
+        //    sR.sprite = spriteList[0];
+        //}
+        //else if (dir == PlacedObjectTypeSO.Dir.Left)
+        //{
+        //    sR.sprite = spriteList[1];
+        //}
+        //else if (dir == PlacedObjectTypeSO.Dir.Up)
+        //{
+        //    sR.sprite = spriteList[2];
+        //}
+        //else //Right
+        //{
+        //    sR.sprite = spriteList[3];
+        //}
     }
 
     public void DestroySelf()
