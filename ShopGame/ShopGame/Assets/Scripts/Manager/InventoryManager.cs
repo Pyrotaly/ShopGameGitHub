@@ -33,14 +33,22 @@ public class InventoryManager : MonoBehaviour
             //Add to list
         }
 
+        if (item is PersonalRoomItem prItem)
+        {
+            //Add to other list
+        }
+
         //if (item is FunctionItem)
         //{
         //    FunctionItem functionItem = (FunctionItem)item;
         //    Debug.Log("HHAHA");
         //}
 
+        //WARNING: If the inventory manager already has items in it, it will not make a new Invetory slot so it will do the else statement fully
+
         if (!CheckItem.Contains(item))
         {
+            Debug.Log("hi");
             CheckItem.Add(item);
             Stock.Add(new InventorySlot(item, amount));
         }
@@ -87,7 +95,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-        OnAlteringItemList?.Invoke();
+        OnAlteringItemList?.Invoke();  //Refresh scrollmenu
     }
 
     //Increase or decrease player money here
